@@ -43,6 +43,6 @@ public class Post {
 	@JoinColumn(name = "userId")
 	private User user;
 
-	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL)  //todo: cannot load the comment data
 	private Set<Comment> comments = new HashSet<>();
 }

@@ -23,6 +23,12 @@ public class GlobalExceptionHandler {
 		APIResponse apiResponse = new APIResponse(message,HttpStatus.NOT_FOUND, false);
 		return new ResponseEntity<APIResponse>(apiResponse, HttpStatus.NOT_FOUND);
 	}
+
+	@ExceptionHandler(JwtTokenException.class)
+	public  ResponseEntity<APIResponse> jwtTOkenError(JwtTokenException exception){
+		APIResponse apiResponse = new APIResponse(exception.getTitle() +" " +exception.getMessage(), HttpStatus.BAD_REQUEST, false);
+		return  ResponseEntity.ok(apiResponse);
+	}
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<Map<String, String>> handleMethodArugNotFoundExc(
