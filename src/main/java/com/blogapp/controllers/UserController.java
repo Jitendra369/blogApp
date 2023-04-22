@@ -57,17 +57,18 @@ public class UserController {
 	
 //	GET - get user
 	@GetMapping("/{userId}")
-	private ResponseEntity<?> getUser(@PathVariable("userId") Integer userId){
+	public ResponseEntity<?> getUser(@PathVariable("userId") Integer userId){
 		UserDto userDto = this.userServiceImpl.getUserById(userId);
 		return new ResponseEntity<>(userDto, HttpStatus.OK);
 	}
 	
 //	GET - all users
 	@GetMapping("/allusers")
-	private ResponseEntity<List<UserDto>> getAllUsers(){
+	public ResponseEntity<List<UserDto>> getAllUsers(){
 		List<UserDto> allUsers = this.userServiceImpl.getAllUsers();
 		return new ResponseEntity<List<UserDto>>(allUsers, HttpStatus.OK);
 	}
+
 	
 	
 }
